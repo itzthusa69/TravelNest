@@ -10,6 +10,7 @@ body {
     color: white;
     min-height: 100vh;
     padding: 40px;
+    padding-bottom: 80px;
 }
 
 .navbar {
@@ -125,8 +126,21 @@ button:hover {
 }
 
 .footer {
-    margin-top: 40px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     text-align: center;
+    margin-top: 0;
+    border-radius: 0;
+    padding: 15px 30px;
+    z-index: 100;
+}
+
+.footer-bottom p {
+    margin: 0;
+    color: #94a3b8;
+    font-size: 14px;
 }
 
 .footer h3 {
