@@ -1,82 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TravelNest - Mood</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<nav class="navbar glass">
-    <h2>TravelNest</h2>
+    <nav class="navbar glass">
+        <h2>TravelNest</h2>
 
-    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+        <div class="menu-btn" onclick="toggleMenu()">☰</div>
 
-    <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="explorer.html">Explorer</a></li>
-        <li><a href="budget.html">Budget</a></li>
-        <li><a href="random.html">Random</a></li>
-        <li><a href="mood.html">Mood</a></li>
-        <li><a href="feedback.html">Feedback</a></li>
-    </ul>
-</nav>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="explorer.html">Explorer</a></li>
+            <li><a href="budget.html">Budget</a></li>
+            <li><a href="random.html">Random</a></li>
+            <li><a href="mood.html">Mood</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+        </ul>
+    </nav>
 
-<section class="glass page-box">
-    <h1>Travel Mood</h1>
-    <p>Relax with travel sounds and track places you visited or plan to visit.</p>
-</section>
+    <section class="glass page-box">
+        <h1>Travel Mood</h1>
+        <p>Relax with travel sounds and track places you visited or plan to visit.</p>
+    </section>
 
-<section class="glass page-box">
+    <section class="glass page-box">
 
-    <h2>Ambient Sounds</h2>
+        <h2>Ambient Sounds</h2>
 
-    <div class="filters">
-        <button onclick="playBeach()">Beach</button>
-        <button onclick="playForest()">Forest</button>
+        <div class="filters">
+            <button onclick="playBeach()">Beach</button>
+            <button onclick="playForest()">Forest</button>
 
-        <button onclick="stopSounds()">Stop</button>
-    </div>
+            <button onclick="stopSounds()">Stop</button>
+        </div>
 
-</section>
+    </section>
 
-<section class="glass page-box">
+    <section class="glass page-box">
 
-    <h2>Travel Tracker</h2>
+        <h2>Travel Tracker</h2>
 
-    <div class="filters">
+        <div class="filters">
 
-        <input type="text" id="placeName" placeholder="Enter Destination">
+            <input type="text" id="placeName" placeholder="Enter Destination">
 
-        <select id="travelStatus">
-            <option value="">Choose Status</option>
-            <option value="Visited">Visited</option>
-            <option value="Planned">Planned</option>
-        </select>
+            <select id="travelStatus">
+                <option value="">Choose Status</option>
+                <option value="Visited">Visited</option>
+                <option value="Planned">Planned</option>
+            </select>
 
-        <button onclick="saveTravelStatus()">Save</button>
+            <button onclick="saveTravelStatus()">Save</button>
 
-    </div>
+        </div>
 
-</section>
+    </section>
 
-<section class="glass page-box">
-    <h2>Saved Travel Status</h2>
-    <p id="travelResult">No places added yet.</p>
-</section>
+    <section class="glass page-box">
+        <h2>Saved Travel Status</h2>
+        <p id="travelResult">No places added yet.</p>
+    </section>
 
-<!-- AUDIO -->
-<audio id="beachSound" loop>
-    <source src="beach.mp3" type="audio/mpeg">
-</audio>
+    <!-- AUDIO -->
+    <audio id="beachSound" loop>
+        <source src="beach.mp3" type="audio/mpeg">
+    </audio>
 
-<audio id="forestSound" loop>
-    <source src="forest.mp3" type="audio/mpeg">
-</audio>
+    <audio id="forestSound" loop>
+        <source src="forest.mp3" type="audio/mpeg">
+    </audio>
 
 
 
-<script src="script.js"></script>
+    <footer class="glass footer">
+        <div class="footer-bottom">
+            <p>&copy; 2026 TravelNest. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
+
 </html>

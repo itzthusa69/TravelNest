@@ -7,6 +7,62 @@
     "Sri Lanka",
     "Switzerland"
   ],
+  "destinations": [
+    {
+      "name": "Switzerland",
+      "continent": "Europe",
+      "description": "Switzerland is famous for its stunning mountains, lakes, and skiing.",
+      "attractions": ["Matterhorn", "Jungfraujoch", "Lake Geneva", "Lucerne"],
+      "budget": "$120/day",
+      "standard": "$250/day",
+      "luxury": "$600/day"
+    },
+    {
+      "name": "Paris",
+      "continent": "France",
+      "description": "Paris is famous for romance, fashion, and its iconic historical landmarks.",
+      "attractions": ["Eiffel Tower", "Louvre Museum", "Seine River", "Notre-Dame"],
+      "budget": "$80/day",
+      "standard": "$180/day",
+      "luxury": "$400/day"
+    },
+    {
+      "name": "Tokyo",
+      "continent": "Japan",
+      "description": "Tokyo mixes modern ultra-city life with traditional Japanese culture seamlessly.",
+      "attractions": ["Shibuya Crossing", "Tokyo Tower", "Sensō-ji Temple", "Meiji Shrine"],
+      "budget": "$90/day",
+      "standard": "$170/day",
+      "luxury": "$380/day"
+    },
+    {
+      "name": "Dubai",
+      "continent": "Middle East",
+      "description": "Dubai is known for luxury shopping and skyscrapers.",
+      "attractions": ["Burj Khalifa", "Palm Jumeirah", "Dubai Mall"],
+      "budget": "$100/day",
+      "standard": "$220/day",
+      "luxury": "$500/day"
+    },
+    {
+      "name": "Maldives",
+      "continent": "Indian Ocean",
+      "description": "Maldives is known for its stunning beaches, crystal-clear water, and luxurious resorts.",
+      "attractions": ["Bikini Beach", "Male City", "Hanifaru Bay", "Maafushi Island"],
+      "budget": "$120/day",
+      "standard": "$250/day",
+      "luxury": "$500/day"
+    },
+    {
+      "name": "Sri Lanka",
+      "continent": "Asia",
+      "description": "Sri Lanka is an island nation in South Asia, known for its beautiful beaches, tea plantations, ancient ruins, and rich cultural heritage.",
+      "attractions": ["Sigiriya Rock", "Temple of the Tooth", "Yala National Park", "Ella Gap"],
+      "budget": "$50/day",
+      "standard": "$110/day",
+      "luxury": "$280/day"
+    }
+  ],
   "tripList": [
     { "name": "Swiss Alps", "type": "Adventure", "budget": "High" },
     { "name": "Costa Rica", "type": "Adventure", "budget": "Medium" },

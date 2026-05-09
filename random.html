@@ -1,79 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TravelNest - Random Trip</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<nav class="navbar glass">
-    <h2>TravelNest</h2>
+    <nav class="navbar glass">
+        <h2>TravelNest</h2>
 
-    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+        <div class="menu-btn" onclick="toggleMenu()">☰</div>
 
-    <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="explorer.html">Explorer</a></li>
-        <li><a href="budget.html">Budget</a></li>
-        <li><a href="random.html">Random</a></li>
-        <li><a href="mood.html">Mood</a></li>
-        <li><a href="feedback.html">Feedback</a></li>
-    </ul>
-</nav>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="explorer.html">Explorer</a></li>
+            <li><a href="budget.html">Budget</a></li>
+            <li><a href="random.html">Random</a></li>
+            <li><a href="mood.html">Mood</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+        </ul>
+    </nav>
 
-<section class="glass page-box">
-    <h1>Random Trip Generator</h1>
-    <p>Select your travel style and budget range.</p>
-</section>
+    <section class="glass page-box">
+        <h1>Random Trip Generator</h1>
+        <p>Select your travel style and budget range.</p>
+    </section>
 
-<section class="glass page-box">
+    <section class="glass page-box">
 
-    <div class="filters">
+        <div class="filters">
 
-        <select id="travelType">
-            <option value="">Travel Type</option>
-            <option value="Adventure">Adventure</option>
-            <option value="Relaxation">Relaxation</option>
-            <option value="Cultural">Cultural</option>
-            <option value="Nature">Nature</option>
-        </select>
+            <select id="travelType">
+                <option value="">Travel Type</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Relaxation">Relaxation</option>
+                <option value="Cultural">Cultural</option>
+                <option value="Nature">Nature</option>
+            </select>
 
-        <select id="budgetRange">
-            <option value="">Budget Range</option>
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option>
-        </select>
+            <select id="budgetRange">
+                <option value="">Budget Range</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
 
-        <button onclick="generateTrip()">Generate Trip</button>
+            <button onclick="generateTrip()">Generate Trip</button>
 
-    </div>
+        </div>
 
-</section>
+    </section>
 
-<section class="glass page-box center-box">
+    <section class="glass page-box center-box">
 
-    <h2>Your Destination</h2>
+        <h2>Your Destination</h2>
 
-    <div class="random-card" id="tripResult">
-        Click Generate
-    </div>
+        <div class="random-card" id="tripResult">
+            Click Generate
+        </div>
 
-    <br>
+        <br>
 
-    <button onclick="surpriseMe()">Surprise Me</button>
-    <button onclick="saveWishlist()">Save Wishlist</button>
+        <button onclick="surpriseMe()">Surprise Me</button>
+        <button onclick="saveWishlist()">Save Wishlist</button>
 
-</section>
+    </section>
 
-<section class="glass page-box">
-    <h2>Saved Wishlist</h2>
-    <p id="wishlistText">No saved destination yet.</p>
-</section>
+    <section class="glass page-box">
+        <h2>Saved Wishlist</h2>
+        <p id="wishlistText">No saved destination yet.</p>
+    </section>
 
-<script src="script.js"></script>
+    <footer class="glass footer">
+        <div class="footer-bottom">
+            <p>&copy; 2026 TravelNest. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 
 </body>
+
 </html>
