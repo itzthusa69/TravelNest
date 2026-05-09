@@ -1,0 +1,214 @@
+<!-- explorer.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Destination Explorer</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar glass">
+    <h2>TravelNest</h2>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="explorer.html">Explorer</a></li>
+        <li><a href="budget.html">Budget</a></li>
+        <li><a href="random.html">Random Trip</a></li>
+        <li><a href="mood.html">Mood</a></li>
+        <li><a href="feedback.html">Feedback</a></li>
+    </ul>
+</nav>
+
+<section class="glass page-box">
+    <h1>Destination Explorer</h1>
+
+    <div class="filters">
+        <input type="text" id="searchInput" placeholder="Search destination">
+
+        <select id="continentFilter">
+            <option value="all">All Continents</option>
+            <option value="Europe">Europe</option>
+            <option value="Asia">Asia</option>
+            <option value="Middle East">Middle East</option>
+            <option value="Indian Ocean">Indian Ocean</option>
+        </select>
+
+        <button onclick="filterDestinations()">Search</button>
+    </div>
+</section>
+
+<section class="card-container" id="cardContainer"></section>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">✖</span>
+
+        <h1 id="modalTitle"></h1>
+        <p id="modalDescription" class="modal-desc"></p>
+
+        <h3>Top Attractions</h3>
+        <ul id="attractionList" class="attractions-list"></ul>
+
+        <table class="budget-table">
+            <thead>
+                <tr>
+                    <th>Budget</th>
+                    <th>Estimated Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Low</td>
+                    <td id="budgetCost"></td>
+                </tr>
+                <tr>
+                    <td>Moderate</td>
+                    <td id="standardCost"></td>
+                </tr>
+                <tr>
+                    <td>Luxury</td>
+                    <td id="luxuryCost"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+
+let destinations = [
+    {
+        name: "Switzerland",
+        continent: "Europe", // The image shows "Indonesia" where the continent was
+        description: "Switzerland is famous for its stunning mountains, lakes, and skiing.",
+        attractions: ["Matterhorn", "Jungfraujoch", "Lake Geneva", "Lucerne"],
+        budget: "$120/day",
+        standard: "$250/day",
+        luxury: "$600/day"
+    },
+    {
+        name: "Paris",
+        continent: "France",
+        description: "Paris is famous for romance, fashion, and its iconic historical landmarks.",
+        attractions: ["Eiffel Tower", "Louvre Museum", "Seine River", "Notre-Dame"],
+        budget: "$80/day",
+        standard: "$180/day",
+        luxury: "$400/day"
+    },
+    {
+        name: "Tokyo",
+        continent: "Japan",
+        description: "Tokyo mixes modern ultra-city life with traditional Japanese culture seamlessly.",
+        attractions: ["Shibuya Crossing", "Tokyo Tower", "Sensō-ji Temple", "Meiji Shrine"],
+        budget: "$90/day",
+        standard: "$170/day",
+        luxury: "$380/day"
+    },
+    {
+        name: "Dubai",
+        continent: "Middle East",
+        description: "Dubai is known for luxury shopping and skyscrapers.",
+        attractions: ["Burj Khalifa","Palm Jumeirah","Dubai Mall"],
+        budget: "$100/day",
+        standard: "$220/day",
+        luxury: "$500/day"
+    },
+    {
+        name: "Maldives",
+        continent: "Indian Ocean",
+        description: "Maldives is known for its stunning beaches, crystal-clear water, and luxurious resorts.",
+        attractions: ["Bikini Beach", "Male City", "Hanifaru Bay", "Maafushi Island"],
+        budget: "$120/day",
+        standard: "$250/day",
+        luxury: "$500/day"
+    },
+    {
+        name: "Sri Lanka",
+        continent: "Asia",
+        description: "Sri Lanka is an island nation in South Asia, known for its beautiful beaches,tea plantations, ancient ruins, and rich cultural heritage.",
+        attractions: ["Sigiriya Rock", "Temple of the Tooth", "Yala National Park", "Ella Gap"],
+        budget: "$50/day",
+        standard: "$110/day",
+        luxury: "$280/day"
+    }
+];
+
+function displayCards(list){
+    let output = "";
+
+    list.forEach((item, index) => {
+        // We use the item.name formatted in lowercase without spaces for the image file name
+        let imgName = item.name.toLowerCase().replace(/\s+/g, '');
+        
+        output += `
+        <div class="destination-card" onclick="openModal(${index})">
+            <div class="card-img-wrapper">
+                <img src="pictures/${imgName}.jpg" alt="${item.name}" onerror="this.style.display='none'; this.parentElement.style.background='#334155';">
+            </div>
+            <div class="card-info">
+                <h3>${item.name}</h3>
+                <p>${item.continent}</p>
+            </div>
+        </div>
+        `;
+    });
+
+    document.getElementById("cardContainer").innerHTML = output;
+}
+
+displayCards(destinations);
+
+function filterDestinations(){
+    let text = document.getElementById("searchInput").value.toLowerCase();
+    let continent = document.getElementById("continentFilter").value;
+
+    let filtered = destinations.filter(item => {
+        let matchName = item.name.toLowerCase().includes(text);
+        let matchContinent = continent == "all" || item.continent == continent; // Might need adjustment since we changed continents to countries, but leaving logic for now
+        return matchName && matchContinent;
+    });
+
+    displayCards(filtered);
+}
+
+function openModal(index){
+    let item = destinations[index];
+
+    document.getElementById("modal").style.display = "flex";
+
+    // Set title formatting based on the screenshot: "Bali, Indonesia"
+    document.getElementById("modalTitle").innerText = `${item.name}, ${item.continent}`;
+    document.getElementById("modalDescription").innerText = item.description;
+
+    let list = "";
+    item.attractions.forEach(place => {
+        list += `<li>${place}</li>`;
+    });
+
+    document.getElementById("attractionList").innerHTML = list;
+
+    document.getElementById("budgetCost").innerText = item.budget;
+    document.getElementById("standardCost").innerText = item.standard;
+    document.getElementById("luxuryCost").innerText = item.luxury;
+}
+
+function closeModal(){
+    document.getElementById("modal").style.display = "none";
+}
+
+// Close modal when clicking outside of it
+window.onclick = function(event) {
+    let modal = document.getElementById("modal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html>

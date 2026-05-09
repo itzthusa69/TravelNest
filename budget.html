@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelNest - Budget Planner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar glass">
+    <h2>TravelNest</h2>
+
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="explorer.html">Explorer</a></li>
+        <li><a href="budget.html">Budget</a></li>
+        <li><a href="random.html">Random</a></li>
+        <li><a href="mood.html">Mood</a></li>
+        <li><a href="feedback.html">Feedback</a></li>
+    </ul>
+</nav>
+
+<section class="glass page-box">
+    <h1>Trip Budget Planner</h1>
+    <p>Enter travel details to estimate your total trip cost.</p>
+</section>
+
+<section class="glass page-box">
+
+    <div class="filters">
+
+        <select id="destination">
+            <option value="">Select Destination</option>
+            <option value="Paris">Paris</option>
+            <option value="Tokyo">Tokyo</option>
+            <option value="Dubai">Dubai</option>
+            <option value="Maldives">Maldives</option>
+            <option value="Sri Lanka">Sri Lanka</option>
+        </select>
+
+        <input type="number" id="days" placeholder="Number of Days">
+
+        <input type="number" id="dailyBudget" placeholder="Daily Budget ($)">
+
+        <button onclick="calculateBudget()">Calculate</button>
+
+    </div>
+
+</section>
+
+<section class="glass page-box">
+
+    <h2>Results</h2>
+
+    <p id="tripText">Fill the form above.</p>
+
+    <h3 id="totalCost">$0</h3>
+
+    <p id="budgetStatus">Status: -</p>
+
+    <div class="progress-wrap">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <br>
+
+    <button onclick="saveTrip()">Save Budget</button>
+
+</section>
+
+<section class="glass page-box">
+    <h2>Saved Budget</h2>
+    <p id="savedTrip">No saved trips yet.</p>
+</section>
+
+<script src="script.js"></script>
+
+</body>
+</html>

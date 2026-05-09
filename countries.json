@@ -1,0 +1,25 @@
+{
+  "places": [
+    "Maldives",
+    "Paris",
+    "Dubai",
+    "Tokyo",
+    "Sri Lanka",
+    "Switzerland"
+  ],
+  "tripList": [
+    { "name": "Swiss Alps", "type": "Adventure", "budget": "High" },
+    { "name": "Costa Rica", "type": "Adventure", "budget": "Medium" },
+    { "name": "Nepal", "type": "Adventure", "budget": "Low" },
+    { "name": "Maldives", "type": "Relaxation", "budget": "High" },
+    { "name": "Bali", "type": "Relaxation", "budget": "Medium" },
+    { "name": "Goa", "type": "Relaxation", "budget": "Low" },
+    { "name": "Paris", "type": "Cultural", "budget": "High" },
+    { "name": "Tokyo", "type": "Cultural", "budget": "High" },
+    { "name": "Rome", "type": "Cultural", "budget": "Medium" },
+    { "name": "Angkor Wat", "type": "Cultural", "budget": "Low" },
+    { "name": "Galapagos Islands", "type": "Nature", "budget": "High" },
+    { "name": "Banff", "type": "Nature", "budget": "Medium" },
+    { "name": "Sri Lanka", "type": "Nature", "budget": "Low" }
+  ]
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelNest - Feedback</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar glass">
+    <h2>TravelNest</h2>
+
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="explorer.html">Explorer</a></li>
+        <li><a href="budget.html">Budget</a></li>
+        <li><a href="random.html">Random</a></li>
+        <li><a href="mood.html">Mood</a></li>
+        <li><a href="feedback.html">Feedback</a></li>
+    </ul>
+</nav>
+
+<section class="glass page-box">
+    <h1>Feedback & Support</h1>
+    <p>Send feedback or read common questions below.</p>
+</section>
+
+<section class="glass page-box">
+
+    <h2>Contact Form</h2>
+
+    <div class="filters">
+
+        <input type="text" id="userName" placeholder="Your Name">
+
+        <input type="email" id="userEmail" placeholder="Your Email">
+
+        <textarea id="userMessage" placeholder="Your Message"></textarea>
+
+        <button onclick="submitFeedback()">Send Feedback</button>
+
+    </div>
+
+    <p id="formResult"></p>
+
+</section>
+
+<section class="glass page-box">
+
+    <h2>FAQ</h2>
+
+    <div class="faq-box">
+
+        <button class="faq-btn" onclick="toggleFAQ(0)">
+            How do I save trips?
+        </button>
+        <div class="faq-answer">
+            Use the Save buttons on Budget or Random pages.
+        </div>
+
+        <button class="faq-btn" onclick="toggleFAQ(1)">
+            Is this website mobile friendly?
+        </button>
+        <div class="faq-answer">
+            Yes, the website is responsive for phones and tablets.
+        </div>
+
+        <button class="faq-btn" onclick="toggleFAQ(2)">
+            Where is my data stored?
+        </button>
+        <div class="faq-answer">
+            Data is stored in your browser using localStorage.
+        </div>
+
+    </div>
+
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
