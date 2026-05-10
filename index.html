@@ -23,7 +23,7 @@
         </ul>
     </nav>
 
-    <div class="container">
+    <div class="container" style="margin-bottom: 60px;">
         <header class="hero"
             style="background-image: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1920&q=80');">
             <div class="hero-overlay"></div>
@@ -33,6 +33,29 @@
                 <button onclick="changeQuote()">Next Quote</button>
             </div>
         </header>
+
+        <section class="section intro-text">
+            <h2>Your Journey Starts Here</h2>
+            <p>TravelNest is your ultimate companion for exploring the globe. From discovering <b>hidden gems</b> to <b>budgeting your dream trip</b>, we provide the tools you need to travel with confidence and style.</p>
+        </section>
+
+        <!-- New Slideshow Section -->
+        <section class="glass slideshow-section">
+            <div class="slideshow-container">
+                <div class="slideshow-image">
+                    <img id="slideImg" src="pictures/Paris.png" alt="Featured">
+                </div>
+                <div class="slideshow-content">
+                    <span class="badge">Featured Destination</span>
+                    <h2 id="slideTitle">Paris</h2>
+                    <p id="slideDesc">Paris is famous for romance, fashion, and its iconic historical landmarks.</p>
+                    <div class="slideshow-controls">
+                        <button class="control-btn" onclick="prevSlide()">❮</button>
+                        <button class="control-btn" onclick="nextSlide()">❯</button>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <section class="glass section">
             <h2>Destination Of The Day</h2>

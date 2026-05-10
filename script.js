@@ -141,14 +141,16 @@ window.addEventListener("load", function () {
 
     // Fetch country data from JSON
     fetch("countries.json")
-        .then(res => res.json())
-        .then(data => {
+        .then(function (res) {
+            return res.json();
+        })
+        .then(function (data) {
             places = data.places;
             tripList = data.tripList;
             destinations = data.destinations || [];
 
             // Set daily destination if element exists
-            let today = new Date().getDate();
+            var today = new Date().getDate();
             var destEl = document.getElementById("dailyDestination");
             if (destEl && places.length > 0) {
                 destEl.innerText = places[today % places.length];
@@ -159,8 +161,15 @@ window.addEventListener("load", function () {
             if (cardContainer && destinations.length > 0) {
                 displayCards(destinations);
             }
+
+            // Start slideshow if on home page
+            if (document.getElementById("slideImg")) {
+                slideTimer = setInterval(nextSlide, 5000);
+            }
         })
-        .catch(err => console.error("Error loading JSON:", err));
+        .catch(function (err) {
+            console.error("Error loading JSON:", err);
+        });
 });
 
 // Mobile menu toggle
@@ -171,6 +180,62 @@ function toggleMenu() {
     }
 }
 
+// --- Home Page Functions ---
+
+var quotes = [
+    "Travel is the only thing you buy that makes you richer.",
+    "The world is a book and those who do not travel read only one page.",
+    "Adventure is worthwhile.",
+    "Travel far enough, you meet yourself.",
+    "Jobs fill your pocket, adventures fill your soul."
+];
+
+function changeQuote() {
+    var quoteEl = document.getElementById("quote");
+    if (!quoteEl) return;
+    var random = Math.floor(Math.random() * quotes.length);
+    quoteEl.innerText = quotes[random];
+}
+
+var currentSlide = 0;
+var slideTimer;
+
+function nextSlide() {
+    currentSlide++;
+    if (currentSlide >= destinations.length) {
+        currentSlide = 0;
+    }
+    updateSlide();
+}
+
+function prevSlide() {
+    currentSlide--;
+    if (currentSlide < 0) {
+        currentSlide = destinations.length - 1;
+    }
+    updateSlide();
+}
+
+function updateSlide() {
+    var item = destinations[currentSlide];
+    if (!item) return;
+
+    var imgEl = document.getElementById("slideImg");
+    var titleEl = document.getElementById("slideTitle");
+    var descEl = document.getElementById("slideDesc");
+
+    if (imgEl && titleEl && descEl) {
+        var imgName = item.image ? item.image : item.name + ".png";
+        imgEl.src = "pictures/" + imgName;
+        titleEl.innerText = item.name;
+        descEl.innerText = item.description;
+    }
+
+    // Reset timer
+    clearInterval(slideTimer);
+    slideTimer = setInterval(nextSlide, 5000);
+}
+
 // --- Explorer Page Functions ---
 
 function displayCards(list) {
@@ -178,19 +243,23 @@ function displayCards(list) {
     if (!container) return;
 
     var output = "";
-    list.forEach(function (item, index) {
-        output += `
-        <div class="destination-card" onclick="openModal(${index})">
-            <div class="card-img-wrapper">
-                <img src="pictures/${item.name}.png" alt="${item.name}" onerror="this.style.display='none'; this.parentElement.style.background='#334155';">
-            </div>
-            <div class="card-info">
-                <h3>${item.name}</h3>
-                <p>${item.continent}</p>
-            </div>
-        </div>
-        `;
-    });
+    for (var i = 0; i < list.length; i++) {
+        var item = list[i];
+        var index = i;
+        
+        // Use custom image name if it exists, otherwise use the default name.png
+        var imgName = item.image ? item.image : item.name + ".png";
+
+        output += "<div class=\"destination-card\" onclick=\"openModal(" + index + ")\">" +
+            "<div class=\"card-img-wrapper\">" +
+            "<img src=\"pictures/" + imgName + "\" alt=\"" + item.name + "\" onerror=\"this.style.display='none'; this.parentElement.style.background='#334155';\">" +
+            "</div>" +
+            "<div class=\"card-info\">" +
+            "<h3>" + item.name + "</h3>" +
+            "<p>" + item.continent + "</p>" +
+            "</div>" +
+            "</div>";
+    }
 
     container.innerHTML = output;
 }
@@ -199,11 +268,16 @@ function filterDestinations() {
     var text = document.getElementById("searchInput").value.toLowerCase();
     var continent = document.getElementById("continentFilter").value;
 
-    var filtered = destinations.filter(function (item) {
+    var filtered = [];
+    for (var i = 0; i < destinations.length; i++) {
+        var item = destinations[i];
         var matchName = item.name.toLowerCase().includes(text);
-        var matchContinent = continent == "all" || item.continent == continent;
-        return matchName && matchContinent;
-    });
+        var matchContinent = (continent == "all" || item.continent == continent);
+        
+        if (matchName && matchContinent) {
+            filtered.push(item);
+        }
+    }
 
     displayCards(filtered);
 }
@@ -217,9 +291,10 @@ function openModal(index) {
     document.getElementById("modalDescription").innerText = item.description;
 
     var list = "";
-    item.attractions.forEach(function (place) {
+    for (var i = 0; i < item.attractions.length; i++) {
+        var place = item.attractions[i];
         list += "<li>" + place + "</li>";
-    });
+    }
     document.getElementById("attractionList").innerHTML = list;
 
     document.getElementById("budgetCost").innerText = item.budget;
@@ -240,7 +315,7 @@ window.addEventListener("click", function (event) {
 });
 
 //random 
-let tripList = [];
+var tripList = [];
 
 function generateTrip() {
 
@@ -336,8 +411,8 @@ function showWishlist(list) {
 //mood
 function stopSounds() {
 
-    let beach = document.getElementById("beachSound");
-    let forest = document.getElementById("forestSound");
+    var beach = document.getElementById("beachSound");
+    var forest = document.getElementById("forestSound");
 
     if (beach) {
         beach.pause();
@@ -354,7 +429,7 @@ function stopSounds() {
 function playBeach() {
     stopSounds();
 
-    let beach = document.getElementById("beachSound");
+    var beach = document.getElementById("beachSound");
     if (beach) {
         beach.play();
     }
@@ -363,7 +438,7 @@ function playBeach() {
 function playForest() {
     stopSounds();
 
-    let forest = document.getElementById("forestSound");
+    var forest = document.getElementById("forestSound");
     if (forest) {
         forest.play();
     }
@@ -432,15 +507,15 @@ function showTravelStatus(list) {
 
 function submitFeedback() {
 
-    let nameEl = document.getElementById("userName");
-    let emailEl = document.getElementById("userEmail");
-    let messageEl = document.getElementById("userMessage");
+    var nameEl = document.getElementById("userName");
+    var emailEl = document.getElementById("userEmail");
+    var messageEl = document.getElementById("userMessage");
 
     if (!nameEl || !emailEl || !messageEl) return;
 
-    let name = nameEl.value.trim();
-    let email = emailEl.value.trim();
-    let message = messageEl.value.trim();
+    var name = nameEl.value.trim();
+    var email = emailEl.value.trim();
+    var message = messageEl.value.trim();
 
     if (name == "" || email == "" || message == "") {
         alert("Please fill all fields.");
@@ -452,7 +527,7 @@ function submitFeedback() {
         return;
     }
 
-    let feedbackData = {
+    var feedbackData = {
         name: name,
         email: email,
         message: message
@@ -473,22 +548,19 @@ function submitFeedback() {
 
 function toggleFAQ(index) {
 
-    let answers = document.querySelectorAll(".faq-answer");
+    var answers = document.querySelectorAll(".faq-answer");
 
-    answers.forEach(function (item, i) {
-
+    for (var i = 0; i < answers.length; i++) {
+        var item = answers[i];
         if (i == index) {
-
             if (item.style.display == "block") {
                 item.style.display = "none";
             } else {
                 item.style.display = "block";
             }
-
         } else {
             item.style.display = "none";
         }
-
-    });
+    }
 
 }
