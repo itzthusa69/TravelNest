@@ -225,7 +225,7 @@ function updateSlide() {
     var descEl = document.getElementById("slideDesc");
 
     if (imgEl && titleEl && descEl) {
-        var imgName = item.image ? item.image : item.name + ".png";
+        var imgName = item.image ? item.image : item.name + ".webp";
         imgEl.src = "pictures/" + imgName;
         titleEl.innerText = item.name;
         descEl.innerText = item.description;
@@ -248,11 +248,11 @@ function displayCards(list) {
         var index = i;
         
         // Use custom image name if it exists, otherwise use the default name.png
-        var imgName = item.image ? item.image : item.name + ".png";
+        var imgName = item.image ? item.image : item.name + ".webp";
 
         output += "<div class=\"destination-card\" onclick=\"openModal(" + index + ")\">" +
             "<div class=\"card-img-wrapper\">" +
-            "<img src=\"pictures/" + imgName + "\" alt=\"" + item.name + "\" onerror=\"this.style.display='none'; this.parentElement.style.background='#334155';\">" +
+            "<img src=\"pictures/" + imgName + "\" alt=\"" + item.name + "\" loading=\"lazy\" decoding=\"async\" onerror=\"this.style.display='none'; this.parentElement.style.background='#334155';\">" +
             "</div>" +
             "<div class=\"card-info\">" +
             "<h3>" + item.name + "</h3>" +
