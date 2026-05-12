@@ -7,14 +7,17 @@
     <title>TravelNest - Budget Planner</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
     <nav class="navbar glass">
-        <h2>TravelNest</h2>
-
-        <div class="menu-btn" onclick="toggleMenu()">☰</div>
-
+        <div class="logo">TravelNest</div>
+        <button 
+            class="menu-btn" 
+            onclick="toggleMenu()" 
+            aria-label="Open menu"
+        >
+            ☰
+        </button>
         <ul class="nav-links" id="navLinks">
             <li><a href="index.html">Home</a></li>
             <li><a href="explorer.html">Explorer</a></li>
@@ -25,57 +28,71 @@
         </ul>
     </nav>
 
-    <section class="glass page-box">
+    <header class="glass page-box">
         <h1>Trip Budget Planner</h1>
-        <p>Enter travel details to estimate your total trip cost.</p>
-    </section>
+        <p>
+            Enter travel details to estimate your total trip cost.
+        </p>
+    </header>
 
     <section class="glass page-box">
-
+        <h2>Budget Form</h2>
         <div class="filters">
+            <select id="destination" aria-label="Select destination">
 
-            <select id="destination">
                 <option value="">Select Destination</option>
                 <option value="Paris">Paris</option>
                 <option value="Tokyo">Tokyo</option>
                 <option value="Dubai">Dubai</option>
                 <option value="Maldives">Maldives</option>
                 <option value="Sri Lanka">Sri Lanka</option>
+
             </select>
 
-            <input type="number" id="days" placeholder="Number of Days">
+            <input 
+                type="number" 
+                id="days" 
+                placeholder="Number of Days"
+                aria-label="Number of days"
+            >
 
-            <input type="number" id="dailyBudget" placeholder="Daily Budget ($)">
+            <input 
+                type="number" 
+                id="dailyBudget" 
+                placeholder="Daily Budget ($)"
+                aria-label="Daily budget"
+            >
 
-            <button onclick="calculateBudget()">Calculate</button>
-
+            <button onclick="calculateBudget()">
+                Calculate
+            </button>
         </div>
-
     </section>
 
     <section class="glass page-box">
 
         <h2>Results</h2>
-
-        <p id="tripText">Fill the form above.</p>
-
+        <p id="tripText">
+            Fill the form above.
+        </p>
         <h3 id="totalCost">$0</h3>
-
-        <p id="budgetStatus">Status: -</p>
-
+        <p id="budgetStatus">
+            Status: -
+        </p>
         <div class="progress-wrap">
             <div class="progress-bar" id="progressBar"></div>
         </div>
-
         <br>
-
-        <button onclick="saveTrip()">Save Budget</button>
-
+        <button onclick="saveTrip()">
+            Save Budget
+        </button>
     </section>
 
     <section class="glass page-box">
         <h2>Saved Budget</h2>
-        <p id="savedTrip">No saved trips yet.</p>
+        <p id="savedTrip">
+            No saved trips yet.
+        </p>
     </section>
 
     <footer class="glass footer">
@@ -83,7 +100,6 @@
             <p>&copy; 2026 TravelNest. All rights reserved.</p>
         </div>
     </footer>
-
     <script src="script.js"></script>
 
 </body>
