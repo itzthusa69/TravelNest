@@ -5,15 +5,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Destination Explorer</title>
+    <title>Destination Explorer | TravelNest</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+    <!-- NAVBAR -->
     <nav class="navbar glass">
-        <h2>TravelNest</h2>
-        <div class="menu-btn" onclick="toggleMenu()">☰</div>
+        <div class="logo">TravelNest</div>
+
+        <button class="menu-btn" onclick="toggleMenu()" aria-label="Open navigation menu">
+            ☰
+        </button>
+
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="explorer.html">Explorer</a></li>
@@ -24,13 +29,19 @@
         </ul>
     </nav>
 
-    <section class="glass page-box">
+    <!-- PAGE HEADER -->
+    <header class="glass page-box">
         <h1>Destination Explorer</h1>
 
         <div class="filters">
-            <input type="text" id="searchInput" placeholder="Search destination">
+            <input 
+                type="text" 
+                id="searchInput" 
+                placeholder="Search destination"
+                aria-label="Search destination"
+            >
 
-            <select id="continentFilter">
+            <select id="continentFilter" aria-label="Select continent">
                 <option value="all">All Continents</option>
                 <option value="Europe">Europe</option>
                 <option value="Asia">Asia</option>
@@ -38,48 +49,73 @@
                 <option value="Indian Ocean">Indian Ocean</option>
             </select>
 
-            <button onclick="filterDestinations()">Search</button>
+            <button onclick="filterDestinations()">
+                Search
+            </button>
         </div>
+    </header>
+
+    <!-- DESTINATION CARDS -->
+    <section class="card-section">
+        <h2 class="section-title">Popular Destinations</h2>
+
+        <div class="card-container" id="cardContainer"></div>
     </section>
 
-    <section class="card-container" id="cardContainer"></section>
-
     <!-- MODAL -->
-    <div class="modal" id="modal">
+    <div class="modal" id="modal" aria-hidden="true">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">✖</span>
 
-            <h1 id="modalTitle"></h1>
+            <button 
+                class="close-btn" 
+                onclick="closeModal()" 
+                aria-label="Close modal"
+            >
+                ✖
+            </button>
+
+            <!-- Changed h1 to h2 and added default text -->
+            <h2 id="modalTitle">Destination Details</h2>
+
             <p id="modalDescription" class="modal-desc"></p>
 
+            <!-- Fixed heading hierarchy -->
             <h3>Top Attractions</h3>
+
             <ul id="attractionList" class="attractions-list"></ul>
+
+            <h3>Travel Budget</h3>
 
             <table class="budget-table">
                 <thead>
                     <tr>
-                        <th>Budget</th>
+                        <th>Budget Type</th>
                         <th>Estimated Cost</th>
                     </tr>
                 </thead>
+
                 <tbody>
                     <tr>
                         <td>Low</td>
                         <td id="budgetCost"></td>
                     </tr>
+
                     <tr>
                         <td>Moderate</td>
                         <td id="standardCost"></td>
                     </tr>
+
                     <tr>
                         <td>Luxury</td>
                         <td id="luxuryCost"></td>
                     </tr>
                 </tbody>
             </table>
+
         </div>
     </div>
 
+    <!-- FOOTER -->
     <footer class="glass footer">
         <div class="footer-bottom">
             <p>&copy; 2026 TravelNest. All rights reserved.</p>
